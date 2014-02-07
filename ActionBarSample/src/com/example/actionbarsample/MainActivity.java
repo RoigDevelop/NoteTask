@@ -34,40 +34,55 @@ public class MainActivity extends ActionBarActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		crearMenuLateral();
-		crearGestorDrawer();
+		configurarIconaActionBar();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	    getSupportActionBar().setHomeButtonEnabled(true);
 	}
 
+	/**
+	 * Crear les opcions que es mostraran en el menú lateral
+	 */
 	private void crearMenuLateral() {
 		opcionsMenuLateral = new ArrayList<String>();
 		opcionsMenuLateral.add("Opció 1");
 		opcionsMenuLateral.add("Opció 2");
 		opcionsMenuLateral.add("Opció 3");
 
+		// mapejar l'objecte DrawerLayout
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		// mapejar l'objecte ListView
 		drawerList = (ListView) findViewById(R.id.left_drawer);
+		// assignar l'adapter, indicant que el seu tema s'adapti a l'actual
 		drawerList.setAdapter(new ArrayAdapter<String>(getSupportActionBar()
 				.getThemedContext(), android.R.layout.simple_list_item_1,
 				opcionsMenuLateral));
+		// indicar quin és el listener
 		drawerList.setOnItemClickListener(this);
 
 	}
 
-	private void crearGestorDrawer() {
+	/**
+	 * Configurar la icona de l'action bar: una icona per quan el menú lateral 
+	 * és visible i una altra per quan no és visible
+	 */
+	private void configurarIconaActionBar() {
 		titolApp = getTitle().toString();
 
 		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
 				R.drawable.ic_navigation_drawer, R.string.menu_obert,
 				R.string.menu_tancat) {
 
-	
-
+			/**
+			 * Canviar el títol quan es tanca el menú lateral
+			 */
 			public void onDrawerClosed(View view) {
 				getSupportActionBar().setTitle(titolSeccio);
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
 			}
 
+			/**
+			 * Canviar el títol quan s'obre el menú lateral
+			 */
 			public void onDrawerOpened(View drawerView) {
 				getSupportActionBar().setTitle(titolApp);
 				ActivityCompat.invalidateOptionsMenu(MainActivity.this);
@@ -103,10 +118,14 @@ public class MainActivity extends ActionBarActivity implements
 	}
 
 	@Override
+	/**
+	 * Clic d'un element del menú lateral
+	 */
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Fragment fragment = null;
 
+		// quina opció s'ha seleccionat?
 		switch (position) {
 		case 0:
 			fragment = new Fragment1();
@@ -119,18 +138,24 @@ public class MainActivity extends ActionBarActivity implements
 			break;
 		}
 
+		// obtenir el text que es mostrarà en el títol de l'action bar
 		titolSeccio = opcionsMenuLateral.get(position);
-		FragmentManager fragmentManager = getFragmentManager();
-
-		fragmentManager.beginTransaction()
+		// substituir i posar el nou fragment
+		getFragmentManager().beginTransaction()
 				.replace(R.id.content_frame, fragment).commit();
 
+		// seleccionar l'element de la llista seleccionat
 		drawerList.setItemChecked(position, true);
+		// modificar el títol
 		getActionBar().setTitle(opcionsMenuLateral.get(position));
+		// tancar el menú lateral
 		drawerLayout.closeDrawer(drawerList);
 	}
 
 	@Override
+	/**
+	 * Abans de mostrar el menú, indicar que volem ocultar l'action button
+	 */
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		if (drawerLayout.isDrawerOpen(drawerList))
 			menu.findItem(R.id.action_add).setVisible(false);
