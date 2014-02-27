@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Action Bar Sample</string>
+    <string name="app_name">Task plus</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="actionAfegir">Afegir</string>
-    <string name="title_activity_second">SecondActivity</string>
+    <string name="title_activity_second">Afegir Tasca</string>
     <string name="menu_obert">Obert</string>
     <string name="menu_tancat">Tancat</string>
+    <string name="obreMenu">obre el menu :)</string>
+    <string name="obreMenu2">obre el menu!</string>
+    <string name="afegirTasca">Afegir nova tasca:</string>
+    <string name="novaTasca">Crear Tasca</string>
+    <string name="nomTasca">Nom de la tasca:</string>
+    <string name="descTasca">Tasca:</string>
+    <string name="triarHora">Escull Hora</string>
+    <string name="escullDia">Escull Dia</string>
+    <string name="guardarTasca">Guardar</string>
+    <string name="visorTasques">Visor de Tasques</string>
+    <string name="desc">Descripció:</string>
+    <string name="primerPas">1-Per crear una nova tasca desplega el menú i prem sobre la opció \"nova tasca\"</string>
+    <string name="tuto2">2-Per eliminar una tasca, desplega el menú i ves a l\'apartat de \"Mostrar Tasques\", un cop alla veuràs les tasques, prem sobre una per poder esborrar-la.</string>
+    <string name="manual">Manual</string>
+    <string name="tuto3">3-Prem el botó de la part superior dreta per obrir els detalls de l\'aplicació.</string>
+    <string name="info">Info</string>
 
 </resources>

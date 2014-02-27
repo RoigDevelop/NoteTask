@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
- 
+
     <TextView
-        android:id="@+id/fragment3"
+        android:id="@+id/tuto1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3" />
- 
-</LinearLayout>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="116dp"
+        android:text="@string/primerPas"
+ />
+
+    <TextView
+        android:id="@+id/Tuto2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tuto1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/tuto2"
+         />
+
+    <TextView
+        android:id="@+id/Manual"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="26dp"
+        android:text="@string/manual"
+        android:textColor="#0099BB"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Tuto2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/tuto3" />
+
+</RelativeLayout>

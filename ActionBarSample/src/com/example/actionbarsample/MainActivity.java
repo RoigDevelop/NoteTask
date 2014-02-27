@@ -3,7 +3,6 @@ package com.example.actionbarsample;
 import java.util.ArrayList;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -37,6 +36,8 @@ public class MainActivity extends ActionBarActivity implements
 		configurarIconaActionBar();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	    getSupportActionBar().setHomeButtonEnabled(true);
+	    getFragmentManager().beginTransaction()
+		.replace(R.id.content_frame, new FragmentPrincipal()).commit();
 	}
 
 	/**
@@ -44,9 +45,10 @@ public class MainActivity extends ActionBarActivity implements
 	 */
 	private void crearMenuLateral() {
 		opcionsMenuLateral = new ArrayList<String>();
-		opcionsMenuLateral.add("Opció 1");
-		opcionsMenuLateral.add("Opció 2");
-		opcionsMenuLateral.add("Opció 3");
+		opcionsMenuLateral.add("Nova Tasca");
+		opcionsMenuLateral.add("Mostrar Tasques");
+		opcionsMenuLateral.add("Manual!");
+		
 
 		// mapejar l'objecte DrawerLayout
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -54,7 +56,7 @@ public class MainActivity extends ActionBarActivity implements
 		drawerList = (ListView) findViewById(R.id.left_drawer);
 		// assignar l'adapter, indicant que el seu tema s'adapti a l'actual
 		drawerList.setAdapter(new ArrayAdapter<String>(getSupportActionBar()
-				.getThemedContext(), android.R.layout.simple_list_item_1,
+				.getThemedContext(), android.R.layout.simple_list_item_activated_1,
 				opcionsMenuLateral));
 		// indicar quin és el listener
 		drawerList.setOnItemClickListener(this);
